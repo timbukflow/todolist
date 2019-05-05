@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>ToDoList</title>
+
+        <link rel="stylesheet" href="lib/jQuery/jquery.ui.min.css" />
+        <link rel="stylesheet" href="assets/todo.css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="container">
+
+            <div class="task-list task-container" id="pending">
+                <h3>work to do</h3>
+            </div>
+
+            <div class="task-list task-container" id="inProgress">
+                <h3>work in progress</h3>
+            </div>
+
+            <div class="delete task-list task-container" id="completed">
+                <h3>work is done</h3> 
+                <div id="delete-div">
+                    Drag Here to Delete
+                </div>
+            </div>
+
+            <div class="add task-list">
+                <h3>Add a task</h3>
+                <form id="todo-form">
+                    <input type="text" placeholder="Title" />
+                    <textarea placeholder="Description"></textarea>
+                    <input type="text" id="datepicker" placeholder="Due Date (dd/mm/yyyy)" />
+                    <button type="button" class="btn btn-primary" value="add" onclick="todo.add();">&#43;</button>
+                </form>
+            </div>
+
+            <div style="clear:both;"></div>
+	       <script type="text/javascript" src="lib/jQuery/jquery.min.js"></script>
+            <script type="text/javascript" src="lib/Bootstrap/bootstrap.min.js"></script>
+            <script type="text/javascript" src="lib/jQuery/jquery.ui.min.js"></script>
+            <script type="text/javascript" src="assets/todo.js"></script>
+
+            <script type="text/javascript">
+                $( "#datepicker" ).datepicker();
+                $( "#datepicker" ).datepicker("option", "dateFormat", "dd/mm/yy");
+
+                $(".task-container").droppable();
+                $(".todo-task").draggable({ revert: "valid", revertDuration:200 });
+                todo.init();
+            </script>
+
+        </div>
+    </body>
+</html>
